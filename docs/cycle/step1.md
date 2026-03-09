@@ -5,7 +5,7 @@
 > Q-Java-Spring-Study 저장소는 권한이 없기 때문에 미션을 진행한 코드를 추가할 수 없다.  
 > fork는 Q-Java-Spring-Study의 저장소를 자신의 계정으로 복사하는 기능이다. 앞으로 모든 미션은 자신의 계정 아래에 있는 저장소를 활용해 진행한다.
 
-- fork는 q-study 저장소 우측 상단의 fork 버튼을 활용한다.
+- fork는 Q-Java-Spring-Study 저장소 우측 상단의 fork 버튼을 활용한다.
 
 ### 2. fork한 저장소를 자신의 컴퓨터로 clone한 후 디렉토리로 이동한다.
 

@@ -16,7 +16,7 @@
 ### 1. 빈 문자열 또는 null 값을 입력할 경우 0을 반환해야 한다.(예 : “” => 0, null => 0)
 
 ```java 
-if(text ==null){}
+if(text == null){}
 if(text.isEmpty()){}
 ```
 
