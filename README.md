@@ -25,7 +25,7 @@
 
 ```
 git clone -b {본인_아이디} --single-branch https://github.com/{본인_아이디}/{저장소 아이디}
-ex) git clone -b minsun --single-branch https://github.com/Q-Java-Spring-Study/racing.git
+ex) git clone -b minseon --single-branch https://github.com/Q-Java-Spring-Study/racing.git
 
 // clone한 폴더로 이동하는 방법
 cd {저장소 아이디}
