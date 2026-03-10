@@ -78,6 +78,18 @@ public class Step0Main {
         }
         System.out.println("MAX INT : " + max + "\n");
 
+
+        // 4. 1부터 10중 짝수만 콘솔에 한줄로 출력
+        String[] arr2 = {"1", "2", "3", "4", "5", "6", "7", "8", "9", "10"};
+        System.out.print("짝수만 출력: ");
+        for (int i = 0; i < arr2.length; i++) {
+            int currentNum = Integer.parseInt(arr2[i]);
+            if (currentNum % 2 == 0) {
+                System.out.print(currentNum + " ");
+            }
+        }
+        System.out.println();
+
         scanner.close();
     }
 }
