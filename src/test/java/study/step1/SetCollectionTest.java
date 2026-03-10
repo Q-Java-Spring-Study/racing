@@ -26,10 +26,11 @@ public class SetCollectionTest {
 
     @Test
     @DisplayName("요구사항 1")
-    void sizeTest() {
+    void size() {
         // Set의 크기를 확인한다. (중복 무시)
-        int result = numbers.size();
-        assertThat(result).isEqualTo(3);
+        /*int result = numbers.size();
+        assertThat(result).isEqualTo(3);*/
+        assertThat(numbers).hasSize(3);
     }
 
    /* @Test
@@ -47,7 +48,7 @@ public class SetCollectionTest {
     @ParameterizedTest
     @ValueSource(ints = {1, 2, 3}) // 이 값들이 파라미터로 한 번씩 들어감
     @DisplayName("요구사항 2")
-    void containsTest(int input) {
+    void contains(int input) {
         // ValueSource 덕분에 중복 코드 없이 한 줄로 처리 가능
         assertThat(numbers.contains(input)).isTrue();
     }
@@ -55,7 +56,7 @@ public class SetCollectionTest {
     @ParameterizedTest
     @CsvSource(value = {"1:true", "2:true", "3:true", "4:false", "5:false"}, delimiter = ':')
     @DisplayName("요구사항 3")
-    void containsAdvancedTest(int input, boolean expected) {
+    void containsAdvanced(int input, boolean expected) {
         // 요구사항 3: CsvSource의 값이 input과 expected에 각각 짝지어 들어옵니다.
         assertThat(numbers.contains(input)).isEqualTo(expected);
     }
