@@ -64,6 +64,20 @@ public class Step0Main {
             System.out.println("C \n");
         }
 
+
+        // 3. 가장 큰 수를 구해 콘솔에 결과 출력
+        System.out.println("3. 배열에서 가장 큰 수 찾기");
+        String[] arr1 = {"3", "7", "2", "9", "4"};
+
+        int max = Integer.parseInt(arr1[0]);
+
+        for (int i = 1; i < arr1.length; i++) {
+            if (Integer.parseInt(arr1[i]) > max) {
+                max = Integer.parseInt(arr1[i]);
+            }
+        }
+        System.out.println("MAX INT : " + max + "\n");
+
         scanner.close();
     }
 }
