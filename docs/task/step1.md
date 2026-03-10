@@ -23,7 +23,6 @@
 ### 힌트
 
 - [AssertJ Exception Assertions](https://joel-costigliola.github.io/assertj/assertj-core-features-highlight.html#exception-assertion) 문서 참고
--
 
 ``` java
 import static org.assertj.core.api.Assertions.*;
