@@ -4,12 +4,22 @@ import java.util.Scanner;
 
 public class Step0Main {
 
+    // static final = 클래스 상수
+    private static final int MIN_NUM = 1;
+    private static final int MAX_NUM = 20;
+    private static final String INPUT_NUM_MSG = "1. [1~20] 사이의 숫자를 입력하세요: ";
+
+    private static final int MIN_SCORE = 0;
+    private static final int MAX_SCORE = 100;
+    private static final String INPUT_SCORE_MSG = "2. 0~100점 중 점수를 입력하세요 (등급 출력): ";
+
+
     public static void main(String[] args) {
         // 입력을 받기 위한 Scanner 객체 생성
         Scanner scanner = new Scanner(System.in);
 
         // 1. 1부터 20까지 입력 받아서 모두 더한(+) 후 콘솔에 결과 출력해보기
-        int num = getValidatedInput(scanner, 1, 20, "1. [1~20] 사이의 숫자를 입력하세요: ");
+        int num = getValidatedInput(scanner, MIN_NUM, MAX_NUM, INPUT_NUM_MSG);
         int sum = 0;
         for (int i = 1; i <= num; i++) {
             sum += i;
@@ -20,7 +30,7 @@ public class Step0Main {
 
 
         // 2. 0~100점 중 입력 받은 학점 출력하기
-        int score = getValidatedInput(scanner, 0, 100, "2. 0~100점 중 점수를 입력하세요 (등급 출력): ");
+        int score = getValidatedInput(scanner, MIN_SCORE, MAX_SCORE, INPUT_SCORE_MSG);
         if (score >= 90) {
             System.out.println("A");
         } else if (score >= 80) {
