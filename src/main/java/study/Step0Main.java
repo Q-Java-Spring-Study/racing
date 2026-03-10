@@ -38,6 +38,32 @@ public class Step0Main {
         System.out.println("결과: 1부터 " + num + "까지의 합은 " + sum + "입니다.");
         System.out.println();
 
+
+        // 2. 0~100점 중 입력 받은 학점 출력하기
+        int score = 0;
+        while (true) {
+            System.out.println("2. 0~100점 중 점수를 입력하세요 (등급 출력): ");
+
+            if(!scanner.hasNextInt()){
+                System.out.println("숫자만 입력해주세요.\n");
+                scanner.next();
+                continue;
+            }
+            score = scanner.nextInt();
+            if (score < 0 || score > 100) {
+                System.out.println("0-100 사이의 숫자만 입력해주세요.\n");
+                continue;
+            }
+            break;
+        }
+        if (score >= 90) {
+            System.out.println("A \n");
+        } else if (score >= 80) {
+            System.out.println("B \n");
+        } else {
+            System.out.println("C \n");
+        }
+
         scanner.close();
     }
 }
