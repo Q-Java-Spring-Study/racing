@@ -28,4 +28,12 @@ public class RacingGameTest {
         car.move(RANDOM_MAX_NUMBER);
         assertThat(car.getPosition()).isEqualTo(1);
     }
+
+    @Test
+    void GameStarts() {
+        Game game = new Game(new PlayerName(PLAYER_NAME), CAR_COUNT, RACE_COUNT);
+
+        // Game 내부에서 만들어진 자동차 목록을 가져와서 사이즈가 3인지 검증
+        assertThat(game.getCars().size()).isEqualTo(CAR_COUNT);
+    }
 }

@@ -6,11 +6,11 @@ public class RacingCar {
 
     public void move(int randomNumber) {
         if (randomNumber >= FORWARD_CONDITION){
-            position++;
+            this.position++;
         }
     }
 
     public int getPosition() {
-        return position;
+        return this.position;
     }
 }
