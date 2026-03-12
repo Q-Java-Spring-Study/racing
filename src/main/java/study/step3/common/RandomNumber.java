@@ -11,15 +11,19 @@ public class RandomNumber {
         return generate(DEFAULT_MIN, DEFAULT_MAX);
     }
 
+    public static int generate(int max) {
+        return generate(DEFAULT_MIN, max);
+    }
+
     public static int generate(int min, int max) {
+        if (min < 0 || max < 0) {
+            throw new RuntimeException("음수는 입력할 수 없습니다.");
+        }
         if (min > max) {
             return generate(max, min);
         }
         if (min == max) {
             return min;
-        }
-        if (min < 0 || max < 0) {
-            throw new RuntimeException("음수는 입력할 수 없습니다.");
         }
         return random.nextInt(min, max + 1);
     }
