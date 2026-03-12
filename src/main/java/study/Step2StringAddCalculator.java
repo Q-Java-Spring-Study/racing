@@ -22,7 +22,7 @@ public class Step2StringAddCalculator {
     // 3. 문자열을 배열로 만들기 (기본 구분자 | 커스텀 구분자)
     private static String[] customSplit(String text) {
         // 요구사항 5 _ Pattern.compile로 인식 + matcher로 찾기
-        Matcher m = Pattern.compile("//(.)\n(.*)").matcher(text);
+        Matcher m = Pattern.compile("//(.+)\n(.*)").matcher(text);
         if (m.find()) {
             // 그룹 1의 구분자로 split 하기
             String customDelimiter = m.group(1);
