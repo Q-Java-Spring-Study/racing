@@ -18,7 +18,7 @@ public class RacingGameTest {
     private static final String PLAYER_NAME = "minseon";
     private static final int CAR_COUNT = 3;
     private static final int RACE_COUNT = 5;
-    private static final List<Integer> RANDOM_NUMBERS = Arrays.asList(RANDOM_MAX_NUMBER, RANDOM_MIN_NUMBER, RANDOM_MAX_NUMBER);
+    private static final List<Integer> RANDOM_NUMBERS = List.of(RANDOM_MAX_NUMBER, RANDOM_MIN_NUMBER, RANDOM_MAX_NUMBER);
 
     @Test
     void carDoesNotMove_whenRandomNumberLessThanFour() {
