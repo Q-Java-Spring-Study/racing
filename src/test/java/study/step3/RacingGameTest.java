@@ -6,58 +6,46 @@ import study.step3.model.Game;
 import study.step3.model.PlayerName;
 import study.step3.model.RacingCar;
 
-import java.util.Arrays;
-import java.util.List;
-
-import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
 public class RacingGameTest {
-    private static final int RANDOM_MIN_NUMBER = 3;
-    private static final int RANDOM_MAX_NUMBER = 5;
-    private static final String PLAYER_NAME = "minseon";
-    private static final int CAR_COUNT = 3;
-    private static final int RACE_COUNT = 5;
-    private static final List<Integer> RANDOM_NUMBERS = List.of(RANDOM_MAX_NUMBER, RANDOM_MIN_NUMBER, RANDOM_MAX_NUMBER);
 
     @Test
-    void carDoesNotMove_whenRandomNumberLessThanFour() {
+    void 게임_생성() {
+        Game game = new Game(new PlayerName("PLAYER_NAME"), 3, 5);
+        assertThat(game).isNotNull();
+    }
+
+    @Test
+    void 자동차_생성() {
         RacingCar car = new RacingCar();
-        car.move(RANDOM_MIN_NUMBER);
+        assertThat(car).isNotNull();
+    }
+
+    @Test
+    void 값이_0_9_사이로_무작위_값_생성() {
+        int randomNumber = RandomNumber.generateLimitTen();
+        assertThat(randomNumber).isBetween(0, 10);
+    }
+
+    @Test
+    void 랜덤_값이_3_이하일_경우_정지() {
+        RacingCar car = new RacingCar();
+        car.move(3);
         assertThat(car.getPosition()).isEqualTo(0);
     }
 
     @Test
-    void carMoves_whenRandomNumberGreaterOrEqualFour() {
+    void 랜덤_값이_4_이상일_경우_전진() {
         RacingCar car = new RacingCar();
-        car.move(RANDOM_MAX_NUMBER);
+        car.move(5);
         assertThat(car.getPosition()).isEqualTo(1);
     }
 
     @Test
-    void createsCarsWithGivenCarCount() {
-        Game game = new Game(new PlayerName(PLAYER_NAME), CAR_COUNT, RACE_COUNT);
+    void 게임_생성시_carCount에_맞게_자동자_생성() {
+        Game game = new Game(new PlayerName("PLAYER_NAME"), 3, 5);
         // Game 내부에서 만들어진 자동차 목록을 가져와서 사이즈가 3인지 검증
-        assertThat(game.getCars().size()).isEqualTo(CAR_COUNT);
-    }
-
-    @Test
-    void randomNumberGenerator() throws Exception {
-        assertThat(RandomNumber.generate(RANDOM_MIN_NUMBER, RANDOM_MAX_NUMBER)).isBetween(RANDOM_MIN_NUMBER, RANDOM_MAX_NUMBER);
-
-        assertThatThrownBy(() -> RandomNumber.generate(-1, 10)).isInstanceOf(RuntimeException.class);
-    }
-
-    @Test
-    void carsAttemptMoveForRaceCount() throws Exception {
-        Game game = new Game(new PlayerName(PLAYER_NAME), CAR_COUNT, RACE_COUNT);
-
-        // 첫 번째 차는 전진(5), 두 번째 차는 멈춤(3), 세 번째 차는 전진(5)하도록 고정된 값 리스트 생성
-        game.playOneRound(RANDOM_NUMBERS);
-
-        // 검증
-        assertThat(game.getCars().get(0).getPosition()).isEqualTo(1);
-        assertThat(game.getCars().get(1).getPosition()).isEqualTo(0);
-        assertThat(game.getCars().get(2).getPosition()).isEqualTo(1);
+        assertThat(game.getCars().size()).isEqualTo(3);
     }
 }

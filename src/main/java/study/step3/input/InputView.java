@@ -1,6 +1,7 @@
 package study.step3.input;
 
-import study.step3.common.InputMessage;
+import study.step3.constant.ConsoleMessage;
+import study.step3.constant.ErrorMessage;
 
 import java.util.Scanner;
 
@@ -8,23 +9,25 @@ public class InputView {
 
     private static final Scanner scanner = new Scanner(System.in);
 
+    private InputView() {}
+
     public static String getPlayerName() {
-        return getStringInput(scanner, InputMessage.INPUT_PLAYER_NAME);
+        return getStringInput(ConsoleMessage.INPUT_PLAYER_NAME.getMessage());
     }
 
     public static int getCarCount() {
-        return getPositiveIntInput(scanner, InputMessage.INPUT_CAR_COUNT);
+        return getPositiveIntInput(ConsoleMessage.INPUT_CAR_COUNT.getMessage());
     }
 
     public static int getRaceCount() {
-        return getPositiveIntInput(scanner, InputMessage.INPUT_RACE_COUNT);
+        return getPositiveIntInput(ConsoleMessage.INPUT_RACE_COUNT.getMessage());
     }
 
     public static void scannerClose() {
         scanner.close();
     }
 
-    private static String getStringInput(Scanner scanner, String message) {
+    private static String getStringInput(String message) {
         String value;
         while (true) {
             System.out.println(message);
@@ -32,7 +35,7 @@ public class InputView {
             // 빈문자열 검사
             value = scanner.nextLine().trim();
             if (value.isBlank()) {
-                System.out.println("Input cannot be empty. Please enter again.");
+                System.out.println(ErrorMessage.EMPTY_INPUT.getMessage());
                 continue;
             }
 
@@ -40,27 +43,25 @@ public class InputView {
         }
     }
 
-    private static int getPositiveIntInput(Scanner scanner, String message) {
+    private static int getPositiveIntInput(String message) {
         while (true) {
             System.out.println(message);
             String input = scanner.nextLine().trim();
 
-            // 빈 문자열이 들어온 경우 먼저 걸러내기
             if (input.isBlank()) {
-                System.out.println("Input cannot be empty. Please enter a number.");
+                System.out.println(ErrorMessage.EMPTY_INPUT.getMessage());
                 continue;
             }
 
             try {
-                int value = Integer.parseInt(input); // 문자를 숫자로 변환
+                int value = Integer.parseInt(input);
                 if (value <= 0) {
-                    System.out.println("Negative numbers are not allowed. Please enter a number greater than 0.");
+                    System.out.println(ErrorMessage.NEGATIVE_NUMBER.getMessage());
                     continue;
                 }
-                return value; // 정상 값이면 반환
+                return value;
             } catch (NumberFormatException e) {
-                // 숫자가 아닌 문자가 들어와서 변환에 실패한 경우
-                System.out.println("Please enter numbers only.");
+                System.out.println(ErrorMessage.INVALID_NUMBER_FORMAT.getMessage());
             }
         }
     }
